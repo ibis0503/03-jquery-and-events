@@ -18,6 +18,8 @@ articleView.populateFilters = function() {
 articleView.handleAuthorFilter = function() {
   $('#author-filter').on('change', function() {
     if ($(this).val()) {
+      console.log('happening');
+
       /* TODO: If the select box changes to an option that has a value, we should:
           1. Hide all of the articles
           2. Fade in only the articles that match based on on the author
@@ -25,7 +27,8 @@ articleView.handleAuthorFilter = function() {
             those articles that match the value, and then fade them in.
         */
         // 1.
-
+        var $newArticle = $(event.target);
+        $newArticle.parent().remove();
     } else {
     /* Otherwise, we should:
         1. Show all the articles except the template */
@@ -67,4 +70,5 @@ articleView.setTeasers = function() {
 // TODO: Invoke all of the above functions (I mean, methods!):
 $(function(){
   articleView.populateFilters();
+  articleView.handleAuthorFilter();
 });
