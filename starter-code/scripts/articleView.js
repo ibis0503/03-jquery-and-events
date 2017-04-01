@@ -48,15 +48,44 @@ articleView.handleCategoryFilter = function() {
   /* TODO: Just like we do for #author-filter above, we should also handle
   change events on the #category-filter element. Be sure to reset the
   #author-filter while you're at it! */
+
+  $('#category-filter').on('change', function() {
+    if ($(this).val()) {
+      console.log('happening');
+
+
+      $('article').hide();
+
+      $('article[data-category="' + $(this).val() + '"]').fadeIn();
+
+      var $newArticle = ($(this).val());
+      console.log($newArticle);
+    } else {
+
+      $('article').fadeIn();
+      $('article.template').hide();
+    }
+    $('#author-filter').val('');
+  });
 };
 
 articleView.handleMainNav = function () {
+
   $('.main-nav').on('click', '.tab', function() {
+
     /* TODO:
     1. Hide all of the .tab-content sections
+
     2. Fade in the single .tab-content section that is
     associated with the .tab element's data-content attribute.
     */
+    // 1.
+    $('section.tab-content').hide();
+
+    // 2.
+    $('#' + $(this).attr('data-content')).fadeIn('slow');
+
+
   });
   $('.main-nav .tab:first').click();
 };
@@ -79,4 +108,5 @@ $(function(){
   articleView.populateFilters();
   articleView.handleAuthorFilter();
   articleView.handleCategoryFilter();
+  articleView.handleMainNav();
 });
