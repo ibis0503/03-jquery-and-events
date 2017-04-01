@@ -37,6 +37,8 @@ articleView.handleAuthorFilter = function() {
     } else {
       /* Otherwise, we should:
       1. Show all the articles except the template */
+      $('article').fadeIn();
+      $('article.template').hide();
     }
     $('#category-filter').val('');
   });
@@ -76,4 +78,5 @@ articleView.setTeasers = function() {
 $(function(){
   articleView.populateFilters();
   articleView.handleAuthorFilter();
+  articleView.handleCategoryFilter();
 });
