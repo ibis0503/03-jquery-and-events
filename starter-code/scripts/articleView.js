@@ -93,9 +93,8 @@ articleView.handleMainNav = function () {
 articleView.setTeasers = function() {
   // Truncate logic to show only first two elements within the article body.
   $('.article-body *:nth-of-type(n+2)').hide();
-
   $('article').on('click', '.read-on', function(){
-    console.log("event");
+    console.log('event');
     event.preventDefault();
     $(this).siblings('section.article-body').children().toggle();
     if ($(this).html() === 'Read on →') {
