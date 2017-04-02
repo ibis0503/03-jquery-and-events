@@ -93,6 +93,19 @@ articleView.handleMainNav = function () {
 articleView.setTeasers = function() {
   // Truncate logic to show only first two elements within the article body.
   $('.article-body *:nth-of-type(n+2)').hide();
+
+  $('article').on('click', '.read-on', function(){
+    console.log("event");
+    event.preventDefault();
+    $(this).siblings('section.article-body').children().toggle();
+    if ($(this).html() === 'Read on →') {
+      $(this).html('Read less &larr;');
+    }
+    else {
+      $(this).html('Read on →');
+    }
+  });
+
   /* TODO: Add a delegated event handler to reveal the remaining paragraphs.
   When a .read-on link is clicked, we can:
   1. Prevent the default action of a link.
@@ -101,6 +114,9 @@ articleView.setTeasers = function() {
 
   // STRETCH GOAl!: change the 'Read On' link to 'Show Less'
   */
+
+
+
 };
 
 // TODO: Invoke all of the above functions (I mean, methods!):
@@ -109,4 +125,5 @@ $(function(){
   articleView.handleAuthorFilter();
   articleView.handleCategoryFilter();
   articleView.handleMainNav();
+  articleView.setTeasers();
 });
