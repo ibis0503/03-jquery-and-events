@@ -97,6 +97,7 @@ articleView.setTeasers = function() {
     console.log('event');
     event.preventDefault();
     $(this).siblings('section.article-body').children().toggle();
+
     if ($(this).html() === 'Read on →') {
       $(this).html('Read less &larr;');
     }
